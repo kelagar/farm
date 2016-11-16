@@ -1,0 +1,75 @@
+﻿<!-- This Script is from www.html5freecode.com, Coded by: Kerixa Inc-->
+
+<head>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <!--Sortable funcion to sort out menu options-->
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $(function () {
+        $("#sortable1, #sortable2").sortable({
+            nested: false,
+            vertical: false,
+            exclude: '.divider-vertical',
+            connectWith: ".connect"
+        }).disableSelection();
+    });
+      
+    </script>
+    <style>
+        #sortable1 {
+            padding-left: inherit;
+            width: 600px;
+            min-height: 40px;
+            float: left;
+            
+        }
+    </style>
+
+
+
+
+
+    <!--Drag and Drop of menu options-->
+       
+</head>
+<body>
+    
+    <div>
+    <h style="font-size:large; color:Red">Select The menu options:</h>
+    </div>
+
+
+
+        <ul id="sortable1" class="connect">
+
+            <a id="dashboard" href="#collapse" data-toggle="collapse" style="font-size: 2em;">
+                <i class="fa fa-dashboard"></i>
+            </a>
+            <a id="copy" href="#collapse1" data-toggle="collapse" style="font-size: 2em;">
+                <i class="fa fa-copy"></i>
+            </a>
+            <a id="table" href="#collapse2" data-toggle="collapse" style="font-size: 2em;">
+                <i class="fa fa-table"></i>
+            </a>
+            <a id="pie-chart" href="#collapse3" data-toggle="collapse" style="font-size: 2em;">
+                <i class="fa fa-pie-chart"></i>
+            </a>
+
+        </ul>
+    <div>
+        <input type="button" value="save my edits" onclick="saveEdits()" />
+    </div>
+
+
+</body>
+
+<script>
+    $(document).ready(function () {
+        $("input").click(function () {
+            $("li").removeClass("fa fa-dashboard");
+        });
+    });
+</script>
