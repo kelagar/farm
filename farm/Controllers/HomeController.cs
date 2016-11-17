@@ -31,5 +31,10 @@ namespace farm.Controllers
         {
             return View();
         }
+
+        public ActionResult MyWizardView()
+        {
+            return View();
+        }
     }
 }
