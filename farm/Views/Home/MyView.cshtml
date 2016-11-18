@@ -67,9 +67,26 @@
 </body>
 
 <script>
-    $(document).ready(function () {
-        $("input").click(function () {
-            $("li").removeClass("fa fa-dashboard");
-        });
-    });
+    function saveEdits() {
+
+        //get the editable element
+        var editElem = document.getElementById("sortable2");
+
+        //get the edited element content
+        var userVersion = editElem.innerHTML;
+
+        //save the content to local storage
+        localStorage.userEdits = userVersion;
+
+        //write a confirmation to the user
+        document.getElementById("update").innerHTML = "Edits saved!";
+
+    }
+
+    function checkEdits() {
+
+        //find out if the user has previously saved edits
+        if (localStorage.userEdits != null)
+            document.getElementById("sortable2").innerHTML = localStorage.userEdits;
+    }
 </script>
