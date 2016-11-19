@@ -86,7 +86,8 @@
         font-size: 15px;
         width: 33.33%;
         float: left;
-        position:relative
+        position:relative;
+         
     }
 
     #progressbar li:before {
@@ -100,16 +101,18 @@
         background: white;
         border-radius: 3px;
         margin: 0 auto 5px auto;
+        
+       
     }
         #progressbar li:after {
             content: '';
-            width: 100%;
+            width: 84%;
             height: 2px;
             background: black;
             position: absolute;
-            left: -50%;
+            left: -42%;
             top: 9px;
-            z-index: -1; /*put it behind the numbers*/
+            z-index:0 ; /*put it behind the numbers*/
         }
 
         #progressbar li:first-child:after {
