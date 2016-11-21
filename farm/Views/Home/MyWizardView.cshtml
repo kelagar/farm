@@ -26,6 +26,7 @@
         width: 400px;
         margin: 50px auto;
         text-align: center;
+        position:relative;
     }
 
     /*Hide all except first fieldset*/
@@ -44,9 +45,23 @@
         color: #2C3E50;
         
     }
-    
 
-    fieldset {
+/*Buttons*/
+
+        #Wizard_Form_View .action_button {
+            width: 100px;
+            background: #27AE60;
+            font-weight: bold;
+            color: white;
+            border: 0 none;
+            border-radius: 1px;
+            cursor: pointer;
+            padding: 10px 5px;
+            margin: 10px 5px;
+            font-size:13px;
+        }
+        
+        fieldset {
         /**/
         background: white;
         border: 0 none;
@@ -56,6 +71,7 @@
         box-sizing: border-box;
         width: 80%;
         margin: 0 10%;
+        position:absolute;
     }
 
     .Form_Title {
@@ -69,6 +85,13 @@
         font-size: 13px;
         color: #666;
         margin-bottom: 20px;
+    }
+
+    }
+
+    #Wizard_Form_View .action_button:hover, #Wizard_Form_View .action_buton:focus {
+        box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+        z-index:+1;
     }
 
     /*progressbar*/
@@ -108,7 +131,7 @@
             content: '';
             width: 84%;
             height: 2px;
-            background: black;
+            background: white;
             position: absolute;
             left: -42%;
             top: 9px;
@@ -124,8 +147,38 @@
         #progressbar li.active:before, #progressbar li.active:after {
             background: #27AE60;
             color: white;
+            
         }
 </style>
+<!-- JQUERY Code Here-->
+<head>
+    <!--Jqury plugin-->
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    
+        $(".next").click(function () {
+        var current_fs, next_fs, previous_fs; //fieldsets
+        var left, opacity, scale; //fieldset properties which we will animate
+
+            current_fs = $(this).parent();
+            next_fs = $(this).parent().next();
+
+            //activate next step on progressbar using the index of next_fs
+            $("#progressbar li").eq($("#Wizard_Form_View fieldset").index(next_fs)).addClass("active");
+
+            //show the next fieldset
+            next_fs.show();
+        })
+
+        $(".previous").click(function () {
+
+        })
+
+</script>
+</head>
+
 
 <br />
 <br />
@@ -134,7 +187,7 @@
 
 <form id="Wizard_Form_View">
     <ul id="progressbar">
-        <li>Basic Info</li>
+        <li class="active">Basic Info</li>
         <li>Preferences</li>
         <li>Settings</li>
     </ul>
@@ -146,7 +199,7 @@
         <input type="text" name="_name" placeholder="Name" />
         <input type="date" name="birthday" placeholder="Date Of Birth" />
         <input type="text" name="cpass" placeholder="someone@email.com" />
-        <input type="button" name="next" class=next value="Next">
+        <input type="button" name="next" class="next action_button" value="Next">
     </fieldset>
     <fieldset>
         <h2 class="Form_Title">Social Profiles</h2>
@@ -154,8 +207,8 @@
         <input type="text" name="twitter" placeholder="Twitter" />
         <input type="text" name="facebook" placeholder="Facebook" />
         <input type="text" name="gplus" placeholder="Google Plus" />
-        <input type="button" name="previous" class="previous" value="Previous" />
-        <input type="button" name="next" class="next" value="Next" />
+        <input type="button" name="previous" class="previous action_buton" value="Previous" />
+        <input type="button" name="next" class="next action_button" value="Next" />
     </fieldset>
     <fieldset>
         <h2 class="Form_Title">Personal Details</h2>
@@ -163,7 +216,8 @@
         <input type="text" name="twitter" placeholder="Twitter" />
         <input type="text" name="facebook" placeholder="Facebook" />
         <input type="text" name="gplus" placeholder="Google Plus" />
-        <input type="button" name="previous" class="previous" value="Previous" />
-        <input type="button" name="next" class="next" value="Next" />
+        <input type="button" name="previous" class="previous action_buton" value="Previous" />
+        <input type="button" name="next" class="next action_button" value="Next" />
     </fieldset>
 </form>
+
