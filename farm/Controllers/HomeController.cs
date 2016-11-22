@@ -36,5 +36,9 @@ namespace farm.Controllers
         {
             return View();
         }
+        public ActionResult MyViewWizard()
+        {
+            return View();
+        }
     }
 }
